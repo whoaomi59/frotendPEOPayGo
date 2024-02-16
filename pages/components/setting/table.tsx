@@ -7,7 +7,8 @@ import { TrashIcon, PencilSquareIcon } from "@heroicons/react/20/solid";
 
 import Grid from "./grid";
 
-export default function Tables({ data }: any) {
+export default function Tables({ module, data }: any) {
+  console.log("🚀 ~ Tables ~ data:", data);
   const [table, setTable] = useState(true);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
@@ -63,7 +64,7 @@ export default function Tables({ data }: any) {
             <div className="overflow-x-auto bg-white rounded shadow">
               <div className="">
                 <h2 className="px-6 py-4 pb-4 text-xl font-medium border-b border-gray-300 dark:text-gray-400">
-                  Usuarios
+                  {module}
                 </h2>
                 <div className="flex flex-wrap items-center justify-between px-4 py-2 border-b dark:border-gray-700">
                   <div className="flex items-center pl-3">
@@ -110,9 +111,7 @@ export default function Tables({ data }: any) {
                 <table className="w-full table-auto">
                   <thead className="bg-gray-100">
                     <tr className="text-xs text-left text-gray-500 border-b border-gray-200 dark:border-gray-800">
-                      <th className="px-6 py-3 font-medium dark:text-gray-400">
-                        Actions
-                      </th>
+                      <th className="px-6 py-3 font-medium dark:text-gray-400"></th>
                       <th className="px-6 py-3 font-medium dark:text-gray-400">
                         img
                       </th>
@@ -139,12 +138,30 @@ export default function Tables({ data }: any) {
                     ).map((item: any) => (
                       <tr key={item.id} className="border-b border-gray-200">
                         <td key={item.id} className="px-6 text-sm font-medium ">
-                          <button
-                            className="middle none center mr-4 flex items-center justify-center rounded-lg bg-pink-500 p-3 font-sans text-xs font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                            data-ripple-light="true"
-                          >
-                            <TrashIcon />
-                          </button>
+                          <div className="-mt-px flex divide-x divide-gray-200">
+                            <div className="flex w-0 flex-1">
+                              <a
+                                href={`mailto:${item.email}`}
+                                className="relative -mr-px inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-bl-lg border border-transparent py-4 text-sm font-semibold text-gray-900"
+                              >
+                                <PencilSquareIcon
+                                  className="h-5 w-5 text-gray-400"
+                                  aria-hidden="true"
+                                />
+                              </a>
+                            </div>
+                            <div className="-ml-px flex w-0 flex-1">
+                              <a
+                                href={`tel:${item.telephone}`}
+                                className="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-br-lg border border-transparent py-4 text-sm font-semibold text-gray-900"
+                              >
+                                <TrashIcon
+                                  className="h-5 w-5 text-gray-400"
+                                  aria-hidden="true"
+                                />
+                              </a>
+                            </div>
+                          </div>
                         </td>
 
                         <td

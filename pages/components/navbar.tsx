@@ -18,15 +18,26 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
+import GroupIcon from "@mui/icons-material/Group";
+import HomeWorkIcon from "@mui/icons-material/HomeWork";
+import PermIdentityIcon from "@mui/icons-material/PermIdentity";
+import SettingsPowerIcon from "@mui/icons-material/SettingsPower";
 
 const routes = [
   {
+    ico: <HomeWorkIcon />,
     paht: "/",
     text: "home",
   },
   {
+    ico: <PermIdentityIcon />,
     paht: "/admin/user",
     text: "users",
+  },
+  {
+    ico: <GroupIcon />,
+    paht: "/cliente",
+    text: "empleados",
   },
 ];
 
@@ -173,7 +184,7 @@ export default function NavBar(props: any) {
                       justifyContent: "center",
                     }}
                   >
-                    <InboxIcon />
+                    {data.ico}
                   </ListItemIcon>
                   <ListItemText
                     primary={data.text}
@@ -186,28 +197,26 @@ export default function NavBar(props: any) {
         </List>
         <Divider />
         <List>
-          {["All mail", "Trash", "Spam"].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: "block" }}>
-              <ListItemButton
+          <ListItem disablePadding sx={{ display: "block" }}>
+            <ListItemButton
+              sx={{
+                minHeight: 48,
+                justifyContent: open ? "initial" : "center",
+                px: 2.5,
+              }}
+            >
+              <ListItemIcon
                 sx={{
-                  minHeight: 48,
-                  justifyContent: open ? "initial" : "center",
-                  px: 2.5,
+                  minWidth: 0,
+                  mr: open ? 3 : "auto",
+                  justifyContent: "center",
                 }}
               >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : "auto",
-                    justifyContent: "center",
-                  }}
-                >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-              </ListItemButton>
-            </ListItem>
-          ))}
+                <SettingsPowerIcon />
+              </ListItemIcon>
+              <ListItemText primary={"power"} sx={{ opacity: open ? 1 : 0 }} />
+            </ListItemButton>
+          </ListItem>
         </List>
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
