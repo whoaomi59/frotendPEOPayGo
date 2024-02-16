@@ -1,10 +1,5 @@
 import Layout from "@/pages/components/layout";
-import ConterDefaull from "@/pages/components/setting/conterDefaul";
-import Grid from "@/pages/components/setting/grid";
 import Table from "@/pages/components/setting/table";
-import Title from "@/pages/components/setting/title";
-import { Chip } from "@mui/material";
-import { Button } from "primereact/button";
 
 const usersData = [
   {
@@ -123,7 +118,6 @@ const people = [
 export default function Users() {
   return (
     <Layout>
-      <Title>usuarios</Title>
       <Table data={usersData} />
     </Layout>
   );
